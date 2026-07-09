@@ -36,7 +36,12 @@ import {
   XCircle,
   CheckCircle,
   Calendar,
-  Info
+  Info,
+  Sprout,
+  MessageSquare,
+  Utensils,
+  GraduationCap,
+  Leaf
 } from "lucide-react";
 
 interface LandingPreviewProps {
@@ -76,35 +81,40 @@ export default function LandingPreview({
       subtitle: "¿Tu hijo sufre por las exigencias del sistema?",
       caption: "Muchos niños en Popayán experimentan altos niveles de ansiedad debido a tareas infinitas y ritmos de fábrica.",
       bg: "bg-gradient-to-br from-[#101F1C] to-[#1E3833]",
-      illustration: "sad"
+      illustration: "sad",
+      image: "https://lh3.googleusercontent.com/d/10fJdpVUvaniHzmcJRQUH5D5hX3bLOtPA"
     },
     {
       title: "Homeschooling Legal y Seguro",
       subtitle: "Total validez oficial en Colombia",
       caption: "La ley colombiana avala plenamente educar en casa. Brillo de Luna provee el respaldo institucional que necesitas.",
       bg: "bg-gradient-to-br from-[#1E3833] to-[#305E56]",
-      illustration: "legal"
+      illustration: "legal",
+      image: "https://lh3.googleusercontent.com/d/1BdL2sD8Kt4uyEUi3FzbSc9Dx9FYShZZj"
     },
     {
       title: "Pedagogía con Amor y Sentido",
       subtitle: "Aprendizaje vivencial real",
       caption: "Nuestra metodología integra proyectos activos, cocina, huertas y artes para aprender haciendo, sin memorización vacía.",
       bg: "bg-gradient-to-br from-[#305E56] to-[#488A7E]",
-      illustration: "love"
+      illustration: "love",
+      image: "https://lh3.googleusercontent.com/d/1xijdt4Cz9iGIuNV8F-Y8-9Ds-TaJc9lb"
     },
     {
       title: "Socialización Sana Garantizada",
       subtitle: "Comunidad activa en Popayán",
       caption: "Fomentamos encuentros, salidas a la naturaleza y clubes colaborativos libres de acoso y presiones de grupo.",
       bg: "bg-gradient-to-br from-[#488A7E] to-[#589D91]",
-      illustration: "group"
+      illustration: "group",
+      image: "https://lh3.googleusercontent.com/d/1y-CmJlP7nXlIALB4h5m4mv0x6b7JZIc6"
     },
     {
       title: "Recupera la paz en tu hogar",
       subtitle: "Diseñemos tu Ruta de Luz gratis",
       caption: "Tu hijo merece brillar. Agenda tu asesoría de 30 minutos sin costo para dar una transición feliz.",
       bg: "bg-gradient-to-br from-[#589D91] to-[#1A2A27]",
-      illustration: "cta"
+      illustration: "cta",
+      image: "https://lh3.googleusercontent.com/d/1P_UYz7WLKV5Zbzoh1K-nmylPX8wWb2jg"
     }
   ];
 
@@ -146,7 +156,11 @@ export default function LandingPreview({
   // Create refs for each section to support interactive scrolling
   const heroRef = useRef<HTMLDivElement>(null);
   const painRef = useRef<HTMLDivElement>(null);
+  const esenciaRef = useRef<HTMLDivElement>(null);
+  const programasRef = useRef<HTMLDivElement>(null);
+  const sistemaRef = useRef<HTMLDivElement>(null);
   const solutionRef = useRef<HTMLDivElement>(null);
+  const filosofiaRef = useRef<HTMLDivElement>(null);
   const pillarsRef = useRef<HTMLDivElement>(null);
   const howRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -156,7 +170,11 @@ export default function LandingPreview({
     switch(id) {
       case 'hero': return heroRef;
       case 'pain': return painRef;
+      case 'esencia': return esenciaRef;
+      case 'programas': return programasRef;
+      case 'sistema': return sistemaRef;
       case 'solution': return solutionRef;
+      case 'filosofia': return filosofiaRef;
       case 'pillars': return pillarsRef;
       case 'how-it-works': return howRef;
       case 'testimonials': return testimonialsRef;
@@ -211,21 +229,25 @@ export default function LandingPreview({
       <header className="bg-brand-cream/95 backdrop-blur-md sticky top-0 z-40 px-6 py-3 border-b border-brand-green/10 flex items-center justify-between">
         <BrilloLogo layout="horizontal" size="sm" className="hover:scale-[1.02] transition-transform" />
 
-        <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-bold opacity-75">
-          <button onClick={() => onSectionClick('pain')} className="hover:text-brand-green transition-colors">El Problema</button>
-          <button onClick={() => onSectionClick('solution')} className="hover:text-brand-green transition-colors">Propuesta</button>
-          <button onClick={() => onSectionClick('pillars')} className="hover:text-brand-green transition-colors">Metodología</button>
-          <button onClick={() => onSectionClick('how-it-works')} className="hover:text-brand-green transition-colors">Iniciar</button>
-          <button onClick={() => onSectionClick('testimonials')} className="hover:text-brand-green transition-colors">Testimonios</button>
+        <nav className="hidden md:flex items-center gap-5 text-[11px] uppercase tracking-wider font-bold opacity-80">
+          <button onClick={() => onSectionClick('esencia')} className="hover:text-brand-green transition-colors cursor-pointer">Esencia</button>
+          <button onClick={() => onSectionClick('programas')} className="hover:text-brand-green transition-colors cursor-pointer">Programas</button>
+          <button onClick={() => onSectionClick('sistema')} className="hover:text-brand-green transition-colors cursor-pointer">Sistema</button>
+          <button onClick={() => onSectionClick('solution')} className="hover:text-brand-green transition-colors cursor-pointer">Propuesta</button>
+          <button onClick={() => onSectionClick('filosofia')} className="hover:text-brand-green transition-colors cursor-pointer">Filosofía</button>
+          <button onClick={() => onSectionClick('how-it-works')} className="hover:text-brand-green transition-colors cursor-pointer">Admisiones</button>
+          <button onClick={() => onSectionClick('testimonials')} className="hover:text-brand-green transition-colors cursor-pointer">Testimonios</button>
         </nav>
 
-        <button 
-          onClick={openBookingModal}
-          className="bg-brand-green hover:bg-brand-green/90 text-white font-bold text-xs px-5 py-2.5 rounded-full transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
-        >
-          <Phone className="w-3.5 h-3.5" />
-          <span>Contacto</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={openBookingModal}
+            className="bg-brand-green hover:bg-brand-green/90 text-white font-bold text-xs px-5 py-2.5 rounded-full transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+          >
+            <Phone className="w-3.5 h-3.5" />
+            <span>Contacto</span>
+          </button>
+        </div>
       </header>
 
       {/* LANDING CONTENT */}
@@ -301,7 +323,10 @@ export default function LandingPreview({
                 </div>
 
                 {/* ACTIVE SLIDE DISPLAY PANEL */}
-                <div className={`flex-1 flex flex-col items-center justify-center p-5 text-center text-white relative transition-all duration-500 overflow-hidden ${vslSlides[vslSlide].bg}`}>
+                <div 
+                  className="flex-1 flex flex-col items-center justify-center p-5 text-center text-white relative transition-all duration-500 overflow-hidden bg-cover bg-center"
+                  style={{ backgroundImage: `linear-gradient(rgba(16, 31, 28, 0.72), rgba(16, 31, 28, 0.72)), url(${vslSlides[vslSlide].image})` }}
+                >
                   
                   {/* Floating particles or stars for brand theme */}
                   <div className="absolute top-3 right-3 text-brand-gold/30 text-lg animate-pulse">★</div>
@@ -579,7 +604,7 @@ export default function LandingPreview({
               <div className="bg-brand-cream/90 backdrop-blur-md rounded-xl p-3 flex items-center gap-2 border border-brand-green/10">
                 <div className="w-2.5 h-2.5 bg-brand-green rounded-full animate-ping shrink-0" />
                 <span className="text-[10px] text-brand-dark font-semibold">
-                  Acompañamiento de Inicial, Primaria y Secundaria.
+                  Acompañamiento Inicial.
                 </span>
               </div>
             </div>
@@ -626,7 +651,459 @@ export default function LandingPreview({
           </div>
         </section>
 
-        {/* SECTION 3B: QUALIFIER SECTION (PARA QUIÉN ES Y PARA QUIÉN NO ES) */}
+        {/* NUEVA SECCIÓN: NUESTRA ESENCIA */}
+        <section 
+          ref={esenciaRef}
+          onClick={!previewModeOnly ? () => onSectionClick('esencia') : undefined}
+          className={`relative px-6 py-16 bg-brand-cream border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'esencia' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
+          }`}
+          id="nuestra-esencia"
+        >
+          <div className="max-w-4xl mx-auto grid md:grid-cols-12 gap-10 items-center">
+            {/* Visual Column */}
+            <div className="md:col-span-5 relative group">
+              <div className="absolute inset-0 bg-brand-gold rounded-3xl rotate-2 opacity-10 group-hover:rotate-3 transition-transform" />
+              <img 
+                src="https://lh3.googleusercontent.com/d/1qv9NnU8mP0JgfCa19D4Ar7N-ZANU06Fz" 
+                alt="Exploración Brillo de Luna" 
+                className="rounded-3xl relative z-10 w-full object-cover aspect-[4/5] shadow-lg border-2 border-brand-green/10"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute -bottom-4 -right-4 z-20 bg-brand-green text-white p-3.5 rounded-2xl shadow-md border border-brand-green-light/20 text-xs font-serif font-semibold italic">
+                Aventura libre 🌿
+              </div>
+            </div>
+
+            {/* Content Column */}
+            <div className="md:col-span-7 space-y-6">
+              <span className="inline-block bg-brand-green-light text-brand-green text-xs font-bold px-3 py-1 rounded-full uppercase font-mono">
+                ✨ Nuestra Esencia
+              </span>
+              <h2 className="font-serif text-3xl font-bold tracking-tight text-brand-dark leading-tight">
+                Un rincón cálido para volver a <span className="text-brand-green italic">disfrutar de la infancia</span>
+              </h2>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Brillo de Luna es mucho más que un espacio de acompañamiento. Es un hogar con propósito donde la infancia florece libre de las prisas y la rigidez de la escuela tradicional. Aquí, el aprendizaje ocurre de manera orgánica y los niños descubren el mundo de la forma más bella:
+              </p>
+
+              <div className="grid gap-4 pt-2">
+                <div className="flex gap-3 items-start">
+                  <div className="bg-brand-green-light text-brand-green p-1.5 rounded-lg shrink-0 mt-0.5">
+                    <Heart className="w-4 h-4 fill-brand-green text-brand-green" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif font-bold text-sm text-brand-dark">Aprenden a su propio ritmo</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">Sin competir con otros ni memorizar para un examen. Respetamos sus tiempos de comprensión de forma amorosa.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 items-start">
+                  <div className="bg-brand-green-light text-brand-green p-1.5 rounded-lg shrink-0 mt-0.5">
+                    <Compass className="w-4 h-4 text-brand-green" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif font-bold text-sm text-brand-dark">Desarrollan autonomía real</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">Fomentamos la toma de decisiones consciente y la resolución de retos cotidianos para la vida práctica.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 items-start">
+                  <div className="bg-brand-green-light text-brand-green p-1.5 rounded-lg shrink-0 mt-0.5">
+                    <Smile className="w-4 h-4 text-brand-green" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif font-bold text-sm text-brand-dark">Exploran mediante el juego y la experiencia</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">Convertimos los conceptos abstractos en vivencias tangibles, palpables, coloridas y divertidas.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 items-start">
+                  <div className="bg-brand-green-light text-brand-green p-1.5 rounded-lg shrink-0 mt-0.5">
+                    <Users className="w-4 h-4 text-brand-green" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif font-bold text-sm text-brand-dark">Conviven en un ambiente respetuoso y amoroso</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">Nuestra prioridad es la paz de su corazón, guiándolos con límites sanos, afecto sincero y mucha escucha.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 items-start">
+                  <div className="bg-brand-green-light text-brand-green p-1.5 rounded-lg shrink-0 mt-0.5">
+                    <Leaf className="w-4 h-4 text-brand-green" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif font-bold text-sm text-brand-dark">Conectan directamente con la naturaleza</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">Viven la magia de sembrar, cuidar las plantas y cultivar la tierra, reconociendo el valor de la vida y el alimento.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* NUEVA SECCIÓN: CONOCE BRILLO DE LUNA (PROGRAMAS) */}
+        <section 
+          ref={programasRef}
+          onClick={!previewModeOnly ? () => onSectionClick('programas') : undefined}
+          className={`relative px-6 py-16 bg-brand-green-light/10 border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'programas' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
+          }`}
+          id="programas-brillo"
+        >
+          <div className="max-w-5xl mx-auto space-y-10">
+            <div className="text-center space-y-2">
+              <span className="text-xs font-mono font-bold text-brand-green uppercase tracking-widest block">
+                Nuestros Acompañamientos
+              </span>
+              <h2 className="font-serif text-3xl font-bold tracking-tight text-brand-dark leading-tight">
+                Conoce nuestras líneas de cuidado y crecimiento
+              </h2>
+              <p className="text-gray-500 text-xs md:text-sm max-w-xl mx-auto">
+                Ofrecemos programas adaptados a cada necesidad y etapa del desarrollo infantil, integrando el amor, la libertad y el aprendizaje activo.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              
+              {/* 🌱 NIDO */}
+              <div className="bg-brand-cream border border-brand-green/10 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img 
+                      src="https://lh3.googleusercontent.com/d/1HP5do-QuvIALlPzxYlVF5iaET5TNM2AA" 
+                      alt="Programa Nido" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-3 left-3 bg-brand-green text-white text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                      <Sprout className="w-3 h-3" />
+                      <span>Estímulo</span>
+                    </div>
+                  </div>
+                  <div className="p-5 space-y-2">
+                    <h3 className="font-serif font-bold text-lg text-brand-dark flex items-center gap-2">
+                      <span>🌱 Nido</span>
+                    </h3>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      Estimulación temprana diseñada para los más pequeños del hogar. Acompañamos con ternura sus primeros grandes descubrimientos y apoyamos su desarrollo psicomotriz e integral.
+                    </p>
+                  </div>
+                </div>
+                <div className="p-5 pt-0">
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); openBookingModal(); }}
+                    className="w-full py-2.5 rounded-full border border-brand-green/20 text-brand-green hover:bg-brand-green hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-1 cursor-pointer"
+                  >
+                    <span>Preguntar por Nido</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+
+              {/* 😊 TALLER DE LA FELICIDAD */}
+              <div className="bg-brand-cream border border-brand-green/10 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img 
+                      src="https://lh3.googleusercontent.com/d/16ByxSPLCvaVCBUqvVRXgr3Pxsoa4JOOC" 
+                      alt="Taller de la Felicidad" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-3 left-3 bg-brand-green text-white text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                      <Smile className="w-3 h-3 fill-white text-brand-green" />
+                      <span>Emociones</span>
+                    </div>
+                  </div>
+                  <div className="p-5 space-y-2">
+                    <h3 className="font-serif font-bold text-lg text-brand-dark flex items-center gap-2">
+                      <span>😊 Taller de la Felicidad</span>
+                    </h3>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      Un cálido espacio para niños de 3 a 12 años donde fortalecemos hábitos saludables de estudio, realizamos apoyo de tareas y brindamos un fuerte desarrollo de su inteligencia emocional.
+                    </p>
+                  </div>
+                </div>
+                <div className="p-5 pt-0">
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); openBookingModal(); }}
+                    className="w-full py-2.5 rounded-full border border-brand-green/20 text-brand-green hover:bg-brand-green hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-1 cursor-pointer"
+                  >
+                    <span>Preguntar por Taller</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+
+              {/* 🗣️ MIAU */}
+              <div className="bg-brand-cream border border-brand-green/10 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img 
+                      src="https://lh3.googleusercontent.com/d/1y-CmJlP7nXlIALB4h5m4mv0x6b7JZIc6" 
+                      alt="Programa MIAU" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-3 left-3 bg-brand-green text-white text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                      <MessageSquare className="w-3 h-3 fill-white text-brand-green" />
+                      <span>Lenguaje</span>
+                    </div>
+                  </div>
+                  <div className="p-5 space-y-2">
+                    <h3 className="font-serif font-bold text-lg text-brand-dark flex items-center gap-2">
+                      <span>🗣️ MIAU</span>
+                    </h3>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      Programa especializado de estimulación del lenguaje para favorecer las habilidades de comunicación y la claridad verbal, guiado con juegos, cantos e interacciones muy divertidas.
+                    </p>
+                  </div>
+                </div>
+                <div className="p-5 pt-0">
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); openBookingModal(); }}
+                    className="w-full py-2.5 rounded-full border border-brand-green/20 text-brand-green hover:bg-brand-green hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-1 cursor-pointer"
+                  >
+                    <span>Preguntar por MIAU</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              
+              {/* 🍎 HORA FELIZ */}
+              <div className="bg-brand-cream border border-brand-green/10 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                <div className="flex flex-col md:flex-row h-full">
+                  <div className="relative w-full md:w-2/5 min-h-[160px] md:min-h-full">
+                    <img 
+                      src="https://lh3.googleusercontent.com/d/1DPqNn9u0ha85Fmrg05dAmf9nfe7O1oL0" 
+                      alt="Programa Hora Feliz" 
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-3 left-3 bg-brand-green text-white text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm z-10">
+                      <Utensils className="w-3 h-3" />
+                      <span>Nutrición</span>
+                    </div>
+                  </div>
+                  <div className="p-5 md:w-3/5 space-y-2 flex flex-col justify-between">
+                    <div className="space-y-1.5">
+                      <h3 className="font-serif font-bold text-base text-brand-dark">
+                        🍎 Hora Feliz
+                      </h3>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Iniciativa de alimentación consciente. Diseñamos loncheras nutritivas, deliciosas y educamos sobre hábitos nutricionales positivos para nutrir el cuerpo y el cerebro.
+                      </p>
+                    </div>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); openBookingModal(); }}
+                      className="mt-3 py-2 rounded-full border border-brand-green/20 text-brand-green hover:bg-brand-green hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-1 cursor-pointer"
+                    >
+                      <span>Saber de Hora Feliz</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* 🎓 PREESCOLAR HOMESCHOOL */}
+              <div className="bg-brand-cream border border-brand-green/10 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                <div className="flex flex-col md:flex-row h-full">
+                  <div className="relative w-full md:w-2/5 min-h-[160px] md:min-h-full">
+                    <img 
+                      src="https://lh3.googleusercontent.com/d/1J3iTUjn3zhnt_hk8B6ciF3jQZFUuRZnM" 
+                      alt="Preescolar Homeschool" 
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-3 left-3 bg-brand-green text-white text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm z-10">
+                      <GraduationCap className="w-3 h-3" />
+                      <span>Montessori</span>
+                    </div>
+                  </div>
+                  <div className="p-5 md:w-3/5 space-y-2 flex flex-col justify-between">
+                    <div className="space-y-1.5">
+                      <h3 className="font-serif font-bold text-base text-brand-dark">
+                        🎓 Preescolar Homeschool
+                      </h3>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Educación inicial respetuosa basada en el enfoque Montessori. Proporcionamos un espacio óptimo para el desarrollo cognitivo, sensorial y creativo antes del colegio formal.
+                      </p>
+                    </div>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); openBookingModal(); }}
+                      className="mt-3 py-2 rounded-full border border-brand-green/20 text-brand-green hover:bg-brand-green hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-1 cursor-pointer"
+                    >
+                      <span>Saber de Preescolar</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* NUEVA SECCIÓN: ¿POR QUÉ BRILLO DE LUNA? / SISTEMA DE APRENDIZAJE */}
+        <section 
+          ref={sistemaRef}
+          onClick={!previewModeOnly ? () => onSectionClick('sistema') : undefined}
+          className={`relative px-6 py-16 bg-brand-cream border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'sistema' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
+          }`}
+          id="sistema-aprendizaje"
+        >
+          <div className="max-w-4xl mx-auto space-y-10">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+              
+              {/* Content side */}
+              <div className="space-y-6">
+                <span className="inline-block bg-brand-green-light text-brand-green text-xs font-bold px-3 py-1 rounded-full uppercase font-mono">
+                  🌱 Sistema de Aprendizaje
+                </span>
+                <h2 className="font-serif text-3xl font-bold tracking-tight text-brand-dark leading-tight">
+                  ¿Por qué las familias eligen Brillo de Luna?
+                </h2>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Ofrecemos una alternativa educativa libre de presiones innecesarias. Diseñamos un sistema pensado en el bienestar del niño y en facilitar la vida armónica en el hogar.
+                </p>
+
+                <div className="space-y-5">
+                  {/* No homework */}
+                  <div className="bg-brand-green-light/10 border border-brand-green/5 p-4 rounded-2xl flex gap-3.5 items-start">
+                    <div className="bg-brand-green text-white p-2 rounded-xl shrink-0">
+                      <Heart className="w-4 h-4 fill-white text-brand-green" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif font-bold text-sm text-brand-dark">No dejamos tareas para la casa</h4>
+                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                        Creemos profundamente que el tiempo en familia es fundamental para el sano desarrollo emocional, juego libre y descanso de los niños.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Montessori Evaluation */}
+                  <div className="bg-brand-green-light/10 border border-brand-green/5 p-4 rounded-2xl flex gap-3.5 items-start">
+                    <div className="bg-brand-green text-white p-2 rounded-xl shrink-0">
+                      <Award className="w-4 h-4 text-brand-green" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif font-bold text-sm text-brand-dark">Evaluación trimestral Montessori</h4>
+                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                        Realizamos un seguimiento descriptivo y cualitativo de su proceso individual, evaluando con empatía:
+                      </p>
+                      <ul className="grid grid-cols-2 gap-1 mt-2 text-[11px] text-brand-green font-semibold">
+                        <li className="flex items-center gap-1">✓ Logros alcanzados</li>
+                        <li className="flex items-center gap-1">✓ Procesos de aprendizaje</li>
+                        <li className="flex items-center gap-1 col-span-2">✓ Aspectos que requieren acompañamiento</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Semi-personalized */}
+                  <div className="bg-brand-green-light/10 border border-brand-green/5 p-4 rounded-2xl flex gap-3.5 items-start">
+                    <div className="bg-brand-green text-white p-2 rounded-xl shrink-0">
+                      <Users className="w-4 h-4 text-brand-green" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif font-bold text-sm text-brand-dark">Educación semipersonalizada</h4>
+                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                        Cada docente acompaña un <strong>máximo de 6 niños</strong>. Esto nos permite garantizar una atención cercana, afectuosa, paciente, respetuosa e individualizada.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Visual side */}
+              <div className="relative">
+                <div className="absolute -inset-1.5 bg-gradient-to-tr from-brand-green to-brand-gold rounded-3xl blur opacity-15" />
+                <div className="relative bg-brand-cream border border-brand-green/10 rounded-3xl overflow-hidden shadow-lg aspect-[4/5] flex flex-col justify-between">
+                  <img 
+                    src="https://lh3.googleusercontent.com/d/1BdL2sD8Kt4uyEUi3FzbSc9Dx9FYShZZj" 
+                    alt="Acompañamiento Brillo de Luna" 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent p-5 flex flex-col justify-end text-white">
+                    <span className="text-[10px] font-mono font-bold uppercase text-brand-gold tracking-widest">
+                      Atención Respetuosa
+                    </span>
+                    <h4 className="font-serif font-bold text-base mt-1">
+                      "Un espacio adaptado a sus necesidades, no al revés."
+                    </h4>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* NUEVA SECCIÓN: NUESTRA FILOSOFÍA */}
+        <section 
+          ref={filosofiaRef}
+          onClick={!previewModeOnly ? () => onSectionClick('filosofia') : undefined}
+          className={`relative px-6 py-16 bg-brand-green text-white border-b-4 transition-all overflow-hidden ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'filosofia' ? 'border-brand-gold bg-brand-green/95' : 'border-transparent'
+          }`}
+          id="nuestra-filosofia"
+        >
+          {/* Subtle nature element backgrounds */}
+          <div className="absolute -top-10 -right-10 text-white/5 text-[150px] font-serif select-none pointer-events-none">🌿</div>
+          <div className="absolute -bottom-10 -left-10 text-white/5 text-[150px] font-serif select-none pointer-events-none">🌻</div>
+
+          <div className="max-w-4xl mx-auto grid md:grid-cols-12 gap-10 items-center relative z-10">
+            {/* Text side */}
+            <div className="md:col-span-7 space-y-6">
+              <span className="inline-block bg-brand-gold/20 text-brand-gold text-xs font-bold px-3 py-1 rounded-full uppercase font-mono border border-brand-gold/30">
+                🧭 Nuestra Filosofía
+              </span>
+              <h2 className="font-serif text-3xl font-bold tracking-tight text-white leading-tight">
+                Guiamos a las familias que eligen una educación respetuosa y consciente
+              </h2>
+              <p className="text-white/85 text-sm leading-relaxed">
+                Creemos profundamente que los niños florecen cuando su aprendizaje está centrado en el desarrollo integral y sustentado en el amor. En Brillo de Luna, la educación no ocurre en cuatro paredes de asfalto:
+              </p>
+              
+              <div className="bg-black/20 backdrop-blur-sm border border-white/10 p-5 rounded-2xl">
+                <p className="font-serif italic text-sm text-brand-gold/90 leading-relaxed">
+                  "Nuestros niños viven experiencias reales de aprendizaje, desde las actividades cotidianas más simples hasta el contacto íntimo con la naturaleza y el maravilloso acto de cultivar la tierra con sus propias manos."
+                </p>
+              </div>
+            </div>
+
+            {/* Photo side */}
+            <div className="md:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden border-2 border-brand-gold/30 shadow-2xl aspect-[4/3]">
+                <img 
+                  src="https://lh3.googleusercontent.com/d/1xijdt4Cz9iGIuNV8F-Y8-9Ds-TaJc9lb" 
+                  alt="Cultivando la tierra" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute top-3 right-3 bg-brand-gold text-brand-dark font-mono text-[9px] font-bold uppercase px-2.5 py-1 rounded-full shadow-sm">
+                  Cultivo real 🥕
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 3B: QUALIFIER SECTION (PARA QUIÊN ES Y PARA QUIÊN NO ES) */}
         <section 
           className="relative px-6 py-12 bg-brand-cream/40 border-b-4 border-transparent transition-all"
           id="qualifier-preview"
@@ -1146,6 +1623,37 @@ export default function LandingPreview({
               ))}
             </div>
 
+            {/* Comunidad Brillo de Luna Photos */}
+            <div className="pt-4 space-y-4">
+              <p className="text-center text-[11px] font-mono uppercase font-bold text-brand-gold tracking-widest">
+                🌿 La vida comunitaria en Brillo de Luna 🌿
+              </p>
+              <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto pb-4">
+                <div className="relative group overflow-hidden rounded-2xl border border-white/10 aspect-[16/10] shadow-md">
+                  <img 
+                    src="https://lh3.googleusercontent.com/d/1y-CmJlP7nXlIALB4h5m4mv0x6b7JZIc6" 
+                    alt="Risas en comunidad" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-black/60 p-2 text-center text-[10px] text-white">
+                    Momentos de risas y hermandad
+                  </div>
+                </div>
+                <div className="relative group overflow-hidden rounded-2xl border border-white/10 aspect-[16/10] shadow-md">
+                  <img 
+                    src="https://lh3.googleusercontent.com/d/1Nfp56_G6cgsWBFM45T68eQAYchLF9633" 
+                    alt="Espacio al aire libre" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-black/60 p-2 text-center text-[10px] text-white">
+                    Espacios libres y contacto al aire libre
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="text-center">
               <button 
                 onClick={(e) => {
@@ -1274,6 +1782,22 @@ export default function LandingPreview({
           </p>
         </div>
       </footer>
+
+      {/* BOTÓN FLOTANTE DE WHATSAPP */}
+      <a 
+        href="https://wa.me/573145639095?text=Hola%20Brillo%20de%20Luna,%20quiero%20conocer%20más%20sobre%20el%20acompañamiento%20inicial%20para%20mis%20hijos."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95 group cursor-pointer"
+        title="Contactar por WhatsApp"
+      >
+        <span className="absolute right-full mr-3 bg-brand-dark text-white text-[11px] font-bold px-3 py-1.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md pointer-events-none border border-white/10">
+          ¿Tienes dudas? Chatea con nosotros 💬
+        </span>
+        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.455L0 24zm6.59-4.846c1.66.986 3.298 1.447 5.355 1.448 5.405 0 9.799-4.393 9.802-9.797.002-2.597-1.012-5.035-2.859-6.883C17.058 2.073 14.613 1.06 12.015 1.06 6.612 1.06 2.221 5.451 2.218 10.854c-.001 2.105.56 4.116 1.624 5.895l-.997 3.638 3.731-.978c1.61.874 3.12 1.346 5.071 1.346zm11.13-7.558c-.307-.154-1.82-.898-2.101-.998-.282-.101-.487-.154-.691.154-.204.307-.792.998-.971 1.202-.18.204-.359.227-.666.073-.307-.154-1.297-.478-2.471-1.527-.913-.814-1.53-1.82-1.709-2.127-.18-.307-.019-.473.134-.625.137-.136.307-.359.461-.54.154-.18.205-.307.307-.513.102-.204.051-.385-.026-.54-.077-.154-.691-1.667-.947-2.28-.249-.598-.501-.517-.69-.517-.18 0-.384-.009-.589-.009-.204 0-.538.077-.82.385-.282.307-1.077 1.051-1.077 2.562 0 1.512 1.097 2.972 1.25 3.176.154.204 2.158 3.297 5.228 4.622.729.316 1.299.505 1.743.646.733.233 1.399.2 1.925.122.586-.087 1.82-.743 2.076-1.46.256-.718.256-1.333.18-1.46-.077-.127-.282-.204-.589-.359z" />
+        </svg>
+      </a>
 
     </div>
   );

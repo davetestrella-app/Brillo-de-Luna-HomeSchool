@@ -95,10 +95,10 @@ export const LANDING_SECTIONS: CopyBlueprint[] = [
         },
         {
           title: "Espacios vivenciales y experienciales",
-          description: "El mundo real es nuestro salón de clases. Aprendemos matemáticas cocinando, ciencias cultivando la tierra de Popayán y arte experimentando."
+          description: "El mundo real es nuestro salón de clases. Aprendemos matemáticas cocinando, ciencias cultivando la tierra y arte experimentando."
         },
         {
-          title: "Respeto sagrado por los ritmos",
+          title: "El respeto por cada niño es nuestra prioridad",
           description: "Si tu hijo necesita más tiempo para comprender un concepto, se lo damos. Si brilla en una habilidad artística o científica, la potenciamos sin límites."
         }
       ]
@@ -173,8 +173,8 @@ export const LANDING_SECTIONS: CopyBlueprint[] = [
           description: "Creamos un plan de aprendizaje a la medida de tu hijo y te entregamos la planeación inicial, los recursos pedagógicos interactivos y la asignación del tutor pedagógico idóneo."
         },
         {
-          title: "Paso 3: Inicio de la Aventura Libre",
-          description: "Tu hijo empieza a florecer, disfrutando del aprendizaje desde casa, mientras ustedes reciben nuestro monitoreo amoroso, tutorías constantes y acceden a las actividades comunitarias de Brillo de Luna."
+          title: "Paso 3: Clase de cortesía (1 día)",
+          description: "Los niños podrán vivir durante un día la experiencia del Homeschool Brillo de Luna, participando en las actividades cotidianas y conociendo nuestro ambiente antes de iniciar su proceso."
         }
       ]
     }
@@ -221,6 +221,10 @@ export const FAQS = [
   {
     question: "¿Es legal hacer homeschooling en Colombia?",
     answer: "¡Totalmente legal! La Constitución Política de Colombia de 1991 (Artículo 67) establece que la educación es un derecho de la persona y que la familia es el primer responsable de la educación de los hijos. Además, existen colegios de soporte y plataformas internacionales con las que validamos legalmente el año escolar de tu hijo de forma 100% oficial ante el Ministerio de Educación Nacional."
+  },
+  {
+    question: "¿Hasta qué nivel educativo acompañan?",
+    answer: "Actualmente acompañamos a los niños durante toda la etapa de Educación Inicial y Preescolar, hasta el grado de Transición."
   },
   {
     question: "¿Cómo se maneja la socialización de los niños?",

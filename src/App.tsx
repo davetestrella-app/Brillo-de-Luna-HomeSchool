@@ -22,7 +22,7 @@ export default function App() {
   };
 
   const openBookingModal = () => {
-    setIsBookingModalOpen(true);
+    window.open("https://wa.me/573145639095?text=Hola%20Brillo%20de%20Luna,%20quiero%20conocer%20más%20sobre%20el%20acompañamiento%20inicial%20para%20mis%20hijos.", "_blank", "noopener,noreferrer");
   };
 
   return (
