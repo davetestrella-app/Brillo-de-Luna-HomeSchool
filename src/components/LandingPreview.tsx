@@ -200,19 +200,12 @@ export default function LandingPreview({
   };
 
   return (
-    <div className="bg-brand-cream text-gray-800 rounded-3xl overflow-hidden shadow-2xl border border-brand-green/15 flex flex-col w-full relative" id="landing-preview-container">
-      {previewModeOnly && (
-        <style dangerouslySetInnerHTML={{ __html: `
-          /* Ocultar insignias de estrategia en vista cliente */
-          [id$="-preview"] .absolute.top-4.right-4.z-10 {
-            display: none !important;
-          }
-          /* Quitar el cursor de mano de las secciones en vista cliente */
-          [id$="-preview"] {
-            cursor: default !important;
-          }
-        `}} />
-      )}
+    <div 
+      className={`bg-brand-cream text-gray-800 flex flex-col w-full relative ${
+        previewModeOnly ? "rounded-none border-none shadow-none" : "rounded-3xl border border-brand-green/15 shadow-2xl overflow-hidden"
+      }`} 
+      id="landing-preview-container"
+    >
       
       {/* 1. TOP HEADER / BRAND NAVIGATION */}
       <header className="bg-brand-cream/95 backdrop-blur-md sticky top-0 z-40 px-6 py-3 border-b border-brand-green/10 flex items-center justify-between">
@@ -236,24 +229,28 @@ export default function LandingPreview({
       </header>
 
       {/* LANDING CONTENT */}
-      <div className="flex-1 overflow-y-auto max-h-[80vh]">
+      <div className={previewModeOnly ? "flex-1" : "flex-1 overflow-y-auto max-h-[80vh]"}>
 
         {/* SECTION 1: HERO */}
         <section 
           ref={heroRef}
-          onClick={() => onSectionClick('hero')}
-          className={`relative px-6 py-14 md:py-20 bg-gradient-to-b from-brand-cream via-brand-green-light/20 to-brand-cream border-b-4 transition-all cursor-pointer ${
-            selectedSectionId === 'hero' ? 'border-brand-green bg-brand-green-light/30' : 'border-transparent'
+          onClick={!previewModeOnly ? () => onSectionClick('hero') : undefined}
+          className={`relative px-6 py-14 md:py-20 bg-gradient-to-b from-brand-cream via-brand-green-light/20 to-brand-cream border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'hero' ? 'border-brand-green bg-brand-green-light/30' : 'border-transparent'
           }`}
           id="hero-preview"
         >
           {/* Analyze strategy badge floating */}
-          <div className="absolute top-4 right-4 z-10">
-            <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
-              <Sparkles className="w-3 h-3 animate-spin" />
-              <span>Ver Estrategia de Copy</span>
-            </span>
-          </div>
+          {!previewModeOnly && (
+            <div className="absolute top-4 right-4 z-10">
+              <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
+                <Sparkles className="w-3 h-3 animate-spin" />
+                <span>Ver Estrategia de Copy</span>
+              </span>
+            </div>
+          )}
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-12 gap-8 items-center" id="hero-layout-grid">
             <div className="md:col-span-7 space-y-5">
@@ -473,19 +470,23 @@ export default function LandingPreview({
         {/* SECTION 2: PAIN SECTION (El problema) */}
         <section 
           ref={painRef}
-          onClick={() => onSectionClick('pain')}
-          className={`relative px-6 py-12 bg-brand-green-light/10 border-b-4 transition-all cursor-pointer ${
-            selectedSectionId === 'pain' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
+          onClick={!previewModeOnly ? () => onSectionClick('pain') : undefined}
+          className={`relative px-6 py-12 bg-brand-green-light/10 border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'pain' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
           }`}
           id="pain-preview"
         >
           {/* Analyze strategy badge floating */}
-          <div className="absolute top-4 right-4 z-10">
-            <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
-              <Sparkles className="w-3 h-3" />
-              <span>Ver Estrategia de Copy</span>
-            </span>
-          </div>
+          {!previewModeOnly && (
+            <div className="absolute top-4 right-4 z-10">
+              <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
+                <Sparkles className="w-3 h-3" />
+                <span>Ver Estrategia de Copy</span>
+              </span>
+            </div>
+          )}
 
           <div className="max-w-4xl mx-auto space-y-10">
             <div className="text-center space-y-2">
@@ -537,19 +538,23 @@ export default function LandingPreview({
         {/* SECTION 3: LA SOLUCIÓN */}
         <section 
           ref={solutionRef}
-          onClick={() => onSectionClick('solution')}
-          className={`relative px-6 py-12 md:py-16 bg-brand-cream border-b-4 transition-all cursor-pointer ${
-            selectedSectionId === 'solution' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
+          onClick={!previewModeOnly ? () => onSectionClick('solution') : undefined}
+          className={`relative px-6 py-12 md:py-16 bg-brand-cream border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'solution' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
           }`}
           id="solution-preview"
         >
           {/* Analyze strategy badge floating */}
-          <div className="absolute top-4 right-4 z-10">
-            <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
-              <Sparkles className="w-3 h-3" />
-              <span>Ver Estrategia de Copy</span>
-            </span>
-          </div>
+          {!previewModeOnly && (
+            <div className="absolute top-4 right-4 z-10">
+              <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
+                <Sparkles className="w-3 h-3" />
+                <span>Ver Estrategia de Copy</span>
+              </span>
+            </div>
+          )}
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             
@@ -918,19 +923,23 @@ export default function LandingPreview({
         {/* SECTION 4: PILARES METODOLÓGICOS */}
         <section 
           ref={pillarsRef}
-          onClick={() => onSectionClick('pillars')}
-          className={`relative px-6 py-12 bg-brand-green-light/20 border-b-4 transition-all cursor-pointer ${
-            selectedSectionId === 'pillars' ? 'border-brand-green bg-brand-green-light/30' : 'border-transparent'
+          onClick={!previewModeOnly ? () => onSectionClick('pillars') : undefined}
+          className={`relative px-6 py-12 bg-brand-green-light/20 border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'pillars' ? 'border-brand-green bg-brand-green-light/30' : 'border-transparent'
           }`}
           id="pillars-preview"
         >
           {/* Analyze strategy badge floating */}
-          <div className="absolute top-4 right-4 z-10">
-            <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
-              <Sparkles className="w-3 h-3" />
-              <span>Ver Estrategia de Copy</span>
-            </span>
-          </div>
+          {!previewModeOnly && (
+            <div className="absolute top-4 right-4 z-10">
+              <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
+                <Sparkles className="w-3 h-3" />
+                <span>Ver Estrategia de Copy</span>
+              </span>
+            </div>
+          )}
 
           <div className="max-w-4xl mx-auto space-y-10">
             <div className="text-center space-y-2">
@@ -988,19 +997,23 @@ export default function LandingPreview({
         {/* SECTION 5: CÓMO FUNCIONA */}
         <section 
           ref={howRef}
-          onClick={() => onSectionClick('how-it-works')}
-          className={`relative px-6 py-12 bg-brand-cream border-b-4 transition-all cursor-pointer ${
-            selectedSectionId === 'how-it-works' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
+          onClick={!previewModeOnly ? () => onSectionClick('how-it-works') : undefined}
+          className={`relative px-6 py-12 bg-brand-cream border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'how-it-works' ? 'border-brand-green bg-brand-green-light/20' : 'border-transparent'
           }`}
           id="how-preview"
         >
           {/* Analyze strategy badge floating */}
-          <div className="absolute top-4 right-4 z-10">
-            <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
-              <Sparkles className="w-3 h-3" />
-              <span>Ver Estrategia de Copy</span>
-            </span>
-          </div>
+          {!previewModeOnly && (
+            <div className="absolute top-4 right-4 z-10">
+              <span className="bg-brand-green-light text-brand-green hover:bg-brand-green/20 text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-brand-green/30 shadow-sm transition-all">
+                <Sparkles className="w-3 h-3" />
+                <span>Ver Estrategia de Copy</span>
+              </span>
+            </div>
+          )}
 
           <div className="max-w-4xl mx-auto space-y-10">
             <div className="text-center space-y-2">
@@ -1060,19 +1073,23 @@ export default function LandingPreview({
         {/* SECTION 6: TESTIMONIOS (PRUEBA SOCIAL) */}
         <section 
           ref={testimonialsRef}
-          onClick={() => onSectionClick('testimonials')}
-          className={`relative px-6 py-12 md:py-16 bg-brand-dark text-white border-b-4 transition-all cursor-pointer ${
-            selectedSectionId === 'testimonials' ? 'border-brand-green bg-brand-green-light/10 text-brand-dark' : 'border-transparent'
+          onClick={!previewModeOnly ? () => onSectionClick('testimonials') : undefined}
+          className={`relative px-6 py-12 md:py-16 bg-brand-dark text-white border-b-4 transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'testimonials' ? 'border-brand-green bg-brand-green-light/10 text-brand-dark' : 'border-transparent'
           }`}
           id="testimonials-preview"
         >
           {/* Analyze strategy badge floating */}
-          <div className="absolute top-4 right-4 z-10">
-            <span className="bg-brand-green text-white font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-md">
-              <Sparkles className="w-3 h-3 animate-pulse" />
-              <span>Estrategia de Testimonio</span>
-            </span>
-          </div>
+          {!previewModeOnly && (
+            <div className="absolute top-4 right-4 z-10">
+              <span className="bg-brand-green text-white font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-md">
+                <Sparkles className="w-3 h-3 animate-pulse" />
+                <span>Estrategia de Testimonio</span>
+              </span>
+            </div>
+          )}
 
           <div className="max-w-4xl mx-auto space-y-10">
             <div className="text-center space-y-2">
@@ -1180,19 +1197,23 @@ export default function LandingPreview({
         {/* SECTION 7: CIERRE Y CTA FINAL */}
         <section 
           ref={closingRef}
-          onClick={() => onSectionClick('closing')}
-          className={`relative px-6 py-14 bg-gradient-to-tr from-brand-dark via-brand-green/80 to-brand-dark text-white transition-all cursor-pointer ${
-            selectedSectionId === 'closing' ? 'border-brand-green bg-[#1F2C1C]' : ''
+          onClick={!previewModeOnly ? () => onSectionClick('closing') : undefined}
+          className={`relative px-6 py-14 bg-gradient-to-tr from-brand-dark via-brand-green/80 to-brand-dark text-white transition-all ${
+            !previewModeOnly ? 'cursor-pointer' : ''
+          } ${
+            !previewModeOnly && selectedSectionId === 'closing' ? 'border-brand-green bg-[#1F2C1C]' : ''
           }`}
           id="closing-preview"
         >
           {/* Analyze strategy badge floating */}
-          <div className="absolute top-4 right-4 z-10">
-            <span className="bg-brand-green-light text-brand-green font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-md">
-              <Sparkles className="w-3 h-3" />
-              <span>Ver Estrategia de Copy</span>
-            </span>
-          </div>
+          {!previewModeOnly && (
+            <div className="absolute top-4 right-4 z-10">
+              <span className="bg-brand-green-light text-brand-green font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-md">
+                <Sparkles className="w-3 h-3" />
+                <span>Ver Estrategia de Copy</span>
+              </span>
+            </div>
+          )}
 
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <span className="inline-block text-xs font-mono font-bold text-brand-gold uppercase tracking-widest">
