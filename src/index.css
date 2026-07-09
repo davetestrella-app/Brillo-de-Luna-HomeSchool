@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Caveat:wght@400;700&family=Fredoka:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-script: "Caveat", cursive;
+  --font-hand: "Fredoka", sans-serif;
+  --font-mono: "Fira Code", monospace;
+  
+  --color-brand-green: #589D91;
+  --color-brand-green-light: #E8F2F0;
+  --color-brand-gold: #E48CA3;
+  --color-brand-ochre: #39756C;
+  --color-brand-cream: #FAF8F2;
+  --color-brand-dark: #1A2A27;
+}
+
+@layer base {
+  body {
+    background-color: #FAF8F2;
+    color: #1A2A27;
+    font-family: var(--font-sans);
+  }
+}
+

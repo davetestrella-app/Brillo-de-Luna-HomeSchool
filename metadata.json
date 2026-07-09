@@ -1,0 +1,6 @@
+{
+  "name": "Brillo de Luna Homeschool",
+  "description": "Landing page interactiva, estructura de copy y guía de UX/UI para el proyecto educativo alternativo en Popayán.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
